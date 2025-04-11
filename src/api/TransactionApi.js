@@ -5,7 +5,7 @@ const BASE_URL = import.meta.env.VITE_API_URL
 export const fetchTransactions = async (params = {}) => {
   try {
     console.log('BASE_URL:', BASE_URL)
-    const response = await axios.get( '/api/transactions', { params })
+    const response = await axios.get( BASE_URL+'/transactions', { params })
     return response.data
   } catch (error) {
     console.error('Error fetching transactions:', error)
@@ -15,7 +15,7 @@ export const fetchTransactions = async (params = {}) => {
 
 export const fetchTransaction = async (id) => {
   try {
-    const response = await axios.get(`/api/transactions/${id}`)
+    const response = await axios.get(BASE_URL+`/transactions/${id}`)
     return response.data
   } catch (error) {
     console.error(`Error fetching transaction with id ${id}:`, error)
@@ -44,7 +44,7 @@ export const fetchTransactionsByMonth = async (year, month) => {
 
     console.log('요청 날짜 범위:', startDateInt, '~', endDateInt)
 
-    const response = await axios.get('/api/transactions', { params })
+    const response = await axios.get(BASE_URL+'/transactions', { params })
     return response.data
   } catch (error) {
     console.error(`Error fetching transactions for ${year}-${month}:`, error)
@@ -68,7 +68,7 @@ export const fetchTransactionsByDate = async (year, month) => {
 
     console.log('요청 날짜 범위:', startDate, '~', endDate)
 
-    const response = await axios.get('/api/transactions', { params })
+    const response = await axios.get(BASE_URL+'/transactions', { params })
 
     console.log('받은 데이터:', response.data)
 
@@ -98,7 +98,7 @@ export const fetchTransactionsByDateRange = async (startDate, endDate) => {
       _order: 'desc',
     }
 
-    const response = await axios.get('/api/transactions', { params })
+    const response = await axios.get(BASE_URL+'/transactions', { params })
     return response.data
   } catch (error) {
     console.error('Error fetching transactions by date range:', error)
@@ -126,7 +126,7 @@ export const intToDate = (intDate) => {
 // 거래 생성
 export const createTransaction = async (transaction) => {
   try {
-    const response = await axios.post('/api/transactions', transaction)
+    const response = await axios.post(BASE_URL+'/transactions', transaction)
     return response.data
   } catch (err) {
     console.error('TransactionApi: createTransaction', err)
@@ -137,7 +137,7 @@ export const createTransaction = async (transaction) => {
 // 거래 수정
 export const putTransaction = async (id, transaction) => {
   try {
-    const response = await axios.put(`/api/transactions/${id}`, transaction)
+    const response = await axios.put(BASE_URL+`/transactions/${id}`, transaction)
     return response.data
   } catch (err) {
     console.error('TransactionApi: editTransaction', err)
@@ -148,7 +148,7 @@ export const putTransaction = async (id, transaction) => {
 // 거래 삭제
 export const deleteTransaction = async (id) => {
   try {
-    const response = await axios.delete(`/api/transactions/${id}`)
+    const response = await axios.delete(BASE_URL+`/transactions/${id}`)
     return response.data
   } catch (err) {
     console.error('TransactionApi: deleteTransaction', err)
