@@ -10,6 +10,7 @@ import EditProfile from '@/pages/EditProfile.vue'
 import EditBudget from '@/pages/EditBudget.vue'
 import ApiDebug from '@/pages/ApiDebug.vue'
 
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { test, expect } from "vitest";
 
-const API_BASE = 'http://localhost:3000'
+const BASE_URL = import.meta.env.VITE_API_URL
 
 test('유저 목록을 받는다', async () => {
     const response = await axios.get(`${API_BASE}/user`)

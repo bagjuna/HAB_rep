@@ -58,11 +58,12 @@ import IconButton from '@/components/common/IconButton.vue'
 const router = useRouter()
 // 사용자 정보를 저장할 객체 (json-server의 단일 유저 사용)
 const user = reactive({ id: '', nickname: '', email: '' })
+const BASE_URL = import.meta.env.VITE_API_URL
 
 // 컴포넌트가 마운트되면 API를 통해 유저 정보를 가져옴
 onMounted(async () => {
   try {
-    const response = await axios.get('http://localhost:3000/user')
+    const response = await axios.get(BASE_URL+'/user')
     if (response.data && response.data.length > 0) {
       user.id = response.data[0].id
       user.nickname = response.data[0].nickname
